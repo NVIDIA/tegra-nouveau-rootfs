@@ -93,6 +93,14 @@ Note that the binaries and libraries will all be installed under `/home/ubuntu/u
 
 to `/home/ubuntu/.profile` on the target FS.
 
+Running Programs
+----------------
+Once your FS is booted and the correct environment variables set, you can run kmscube as follows:
+
+    kmscube /dev/dri/card0 /dev/dri/renderD128
+
+As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
+
 Conclusion
 ----------
 You should be all set now - copy the contents of `out/target/L4T` to your boot device (be it SD card or internal eMMC), and U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and if you set your environment variables properly, you will be able to run both `kmscube` and `weston-launch`.
