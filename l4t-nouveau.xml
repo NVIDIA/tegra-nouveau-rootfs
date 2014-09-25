@@ -18,8 +18,8 @@
 
   <!-- User-space libraries and programs -->
   <project path="drm" name="drm.git" remote="gnurou" revision="gk20a"/>
-  <project path="wayland" name="wayland/wayland.git" remote="freedesktop"/>
-  <project path="mesa" name="mesa/mesa.git" remote="freedesktop"/>
+  <project path="wayland" name="wayland/wayland.git" remote="freedesktop" revision="refs/tags/1.6.0"/>
+  <project path="mesa" name="mesa/mesa.git" remote="freedesktop" revision="refs/tags/mesa-10.3"/>
   <project path="kmscube" name="kmscube.git" remote="tagr"/>
   <project path="weston" name="delta/weston.git" remote="baserock" revision="baserock/james/weston"/>
 </manifest>
