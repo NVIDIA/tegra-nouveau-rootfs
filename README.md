@@ -71,7 +71,7 @@ The Nouveau kernel modules can be build and installed similarly:
 
     ./scripts/build-nouveau
 
-They will end in `/lib/modules/KERNEL_VERSION/extra`.
+They will end in `/lib/modules/KERNEL_VERSION/extra` on the target FS.
 
 Compiling User-space Components
 -------------------------------
