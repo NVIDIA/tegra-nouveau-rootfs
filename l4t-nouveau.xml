@@ -15,6 +15,7 @@
   <project path="tegra-uboot-scripts" name="tegra-uboot-scripts.git" remote="nvidia"/>
   <project path="linux" name="linux.git" remote="gnurou" revision="drm"/>
   <project path="nouveau" name="nouveau.git" remote="gnurou" revision="gk20a"/>
+  <project path="linux-firmware" name="linux-firmware.git" remote="gnurou" revision="gk20a"/>
 
   <!-- User-space libraries and programs -->
   <project path="drm" name="drm.git" remote="gnurou" revision="gk20a"/>
