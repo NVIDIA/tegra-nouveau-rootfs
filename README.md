@@ -73,6 +73,12 @@ The Nouveau kernel modules can be build and installed similarly:
 
 They will end in `/lib/modules/KERNEL_VERSION/extra` on the target FS.
 
+Finally install the required GPU firmware:
+
+    ./scripts/install-firmware
+
+The firmware will be installed in `/lib/firmware/nvidia` on the target FS.
+
 Compiling User-space Components
 -------------------------------
 The essential user-space components can be compiled as follows:
