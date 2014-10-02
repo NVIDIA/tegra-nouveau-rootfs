@@ -1,10 +1,11 @@
 L4T Nouveau Installer Scripts
 =============================
-This manifest repository should allow anyone to cross-compile all the required kernel components and user-space libraries to run the OSS graphics stack (Mesa + Nouveau) under L4T on the Jetson TK1. It will install the new kernel, modules, and libraries on either an existing L4T image or a freshly downloaded one.
+This project allows anyone to cross-compile all the required kernel components and user-space libraries required in order to run the OSS graphics stack (Mesa + Nouveau) under the L4T image for the Jetson TK1 board. It produces an Ubuntu 14.04 root filesystem that can be copied to a boot device to enjoy open-source accelerated graphics on Tegra. Alternatively, it can be booted via TFTP/NFS as part of a development environment.
 
-The following components can be installed using the scripts downloaded by this manifest:
+The following components can be installed by following the instructions given in this document:
 - Linux kernel
 - Nouveau modules
+- GPU firmware
 - drm
 - Wayland
 - Mesa
@@ -25,10 +26,15 @@ Under Ubuntu 14.04, the following command will get you all set:
 
     $ sudo apt-get install git build-essential curl phablet-tools autoconf automake libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc u-boot-tools
 
+U-Boot
+------
+The first prerequisite is that you must use an up-to-date U-Boot as bootloader. Jetson TK1 comes with another bootloader flashed ; make sure to follow the instructions on https://github.com/NVIDIA/tegra-uboot-flasher-scripts/blob/master/README-developer.txt to easily flash U-Boot and be safe.
+
+**Warning:** running an outdated U-Boot will cause the kernel to silently crash when loading the GPU driver!
 
 Syncing
 -------
-The first step is to sync all the requires projects using repo:
+All the required projects are synced using Google's `repo` tool:
 
     mkdir l4t-nouveau
     cd l4t-nouveau
@@ -92,7 +98,7 @@ Then you can choose to add kmscube (useful for quickly testing that the graphics
     ./scripts/build-kmscube
     ./scripts/build-weston
 
-Note that the binaries and libraries will all be installed under `/home/ubuntu/usr`, so make sure to add `/home/ubuntu/usr/bin` to the PATH and to set LD_LIBRARY_PATH to `/home/ubuntu/usr/lib`. One easy way to do this is to add the following lines:
+Note that the binaries and libraries will all be installed under `/home/ubuntu/usr`, so make sure to add `/home/ubuntu/usr/bin` to the PATH and to set LD\_LIBRARY\_PATH to `/home/ubuntu/usr/lib`. One easy way to do this is to add the following lines:
 
     export PATH="$HOME/usr/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/usr/lib:$LD_LIBRARY_PATH"
