@@ -1,8 +1,8 @@
-L4T Nouveau Installer Scripts
-=============================
-This project allows anyone to cross-compile all the required kernel components and user-space libraries required in order to run the OSS graphics stack (Mesa + Nouveau) under the L4T image for the Jetson TK1 board. It produces an Ubuntu 14.04 root filesystem that can be copied to a boot device to enjoy open-source accelerated graphics on Tegra. Alternatively, it can be booted via TFTP/NFS as part of a development environment.
+Linux For Tegra (L4T) Nouveau Installer Scripts
+===============================================
+These scripts aim at providing an simple way to enable the open-source graphics stack (Nouveau/Mesa) on Jetson TK1. It does so by automating the process of cross-compiling the necessary software and adapting a new or already-existing L4T root filesystem to run Nouveau/Mesa as an alternative to the closed-source graphics stack.
 
-The following components can be installed by following the instructions given in this document:
+The following components can be installed to a L4T root FS by following the instructions given in this document:
 - Linux kernel
 - Nouveau modules
 - GPU firmware
