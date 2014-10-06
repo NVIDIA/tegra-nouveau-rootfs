@@ -102,7 +102,7 @@ Note that the binaries and libraries will all be installed under `/home/ubuntu/u
 
     export PATH="$HOME/usr/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/usr/lib:$LD_LIBRARY_PATH"
-    export PKG_CONFIG_PATH="$HOME/usr/lib:$PKG_CONFIG_PATH"
+    export PKG_CONFIG_PATH="$HOME/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 to `/home/ubuntu/.profile` on the target FS.
 
