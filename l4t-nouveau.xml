@@ -18,6 +18,7 @@
   <project path="linux-firmware" name="linux-firmware.git" remote="gnurou" revision="gk20a"/>
 
   <!-- User-space libraries and programs -->
+  <project path="pthread-stubs" name="xcb/pthread-stubs.git" remote="freedesktop" revision="refs/tags/0.3"/>
   <project path="drm" name="drm.git" remote="gnurou" revision="gk20a"/>
   <project path="wayland" name="wayland/wayland.git" remote="freedesktop" revision="refs/tags/1.6.0"/>
   <project path="mesa" name="mesa/mesa.git" remote="freedesktop" revision="refs/tags/mesa-10.3"/>
