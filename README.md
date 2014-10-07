@@ -51,7 +51,7 @@ then download the cross-compilation toolchain that we will use:
 
 Preparing the Target Filesystem
 -------------------------------
-All the scripts expect to find your L4T filesystem under `out/target/L4T`. If you wish to use an already-existing rootfs, simply create a from `out/target/L4T` to the root of your L4T filesystem.
+All the scripts expect to find your L4T filesystem under `out/target/L4T`. If you wish to use an already-existing rootfs, simply create a link from `out/target/L4T` to the root of your L4T filesystem.
 
 If you prefer to operate on a fresh L4T installation, then run the following script:
 
