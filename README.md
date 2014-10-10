@@ -38,7 +38,7 @@ All the required projects are synced using Google's `repo` tool:
 
     mkdir l4t-nouveau
     cd l4t-nouveau
-    repo init -u https://github.com/Gnurou/tegra-nouveau-rootfs.git -m l4t-nouveau.xml
+    repo init -u https://github.com/NVIDIA/tegra-nouveau-rootfs.git -m l4t-nouveau.xml
     repo sync -j4 -c
 
 Once all the sources are downloaded, set the TOP environment variable:
