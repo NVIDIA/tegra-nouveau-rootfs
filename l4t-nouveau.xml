@@ -9,7 +9,7 @@
   <default revision="master"/>
 
   <!-- Build scripts -->
-  <project path="scripts" name="tegra-scripts.git" remote="gnurou"/>
+  <project path="scripts" name="tegra-rootfs-scripts.git" remote="gnurou"/>
 
   <!-- Boot, Kernel and Nouveau modules -->
   <project path="tegra-uboot-scripts" name="tegra-uboot-scripts.git" remote="nvidia"/>
