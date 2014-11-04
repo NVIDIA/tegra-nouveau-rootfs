@@ -98,14 +98,7 @@ Then you can choose to add kmscube (useful for quickly testing that the graphics
     ./scripts/build-kmscube
     ./scripts/build-weston
 
-Note that the binaries and libraries will all be installed under `/opt/nouveau`, so make sure to add `/opt/nouveau/bin` to the PATH and to set LD\_LIBRARY\_PATH to `/opt/nouveau/lib`. One easy way to do this is to add the following lines:
-
-    NV_PREFIX="/opt/nouveau"
-    export PATH="$NV_PREFIX/bin:$PATH"
-    export LD_LIBRARY_PATH="$NV_PREFIX/lib:$LD_LIBRARY_PATH"
-    export PKG_CONFIG_PATH="$NV_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-to `/home/ubuntu/.profile` on the target FS.
+Note that the binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
 
 NFS Boot
 --------
