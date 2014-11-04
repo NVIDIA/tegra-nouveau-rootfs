@@ -106,6 +106,25 @@ Note that the binaries and libraries will all be installed under `/home/ubuntu/u
 
 to `/home/ubuntu/.profile` on the target FS.
 
+NFS Boot
+--------
+If you plan to boot your L4T image via NFS, make sure that the /etc/network/interfaces file contains the following line:
+
+    iface eth0 inet manual
+
+It will prevent Ubuntu from reconfiguring the network interface and thus losing the NFS connection at boot.
+
+Errors During Boot
+------------------
+During boot you will encounter the following errors while Nouveau is probed:
+
+    nouveau E[    PBUS][57000000.gpu] MMIO read of 0x00000000 FAULT at 0x17e8dc
+    ...
+    nouveau E[   PFIFO][57000000.gpu] unsupported engines 0x00000030
+    nouveau E[     DRM] failed to create ce channel, -22
+
+These errors are expected for the moment and won't prevent the GPU to work. If you can see the `card1` and `renderD128` nodes in `/dev/dri`, then you know the module is properly probed.
+
 Running Programs
 ----------------
 Once your FS is booted and the correct environment variables set, you can run kmscube as follows:
