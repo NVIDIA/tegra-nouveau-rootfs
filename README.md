@@ -98,11 +98,12 @@ Then you can choose to add kmscube (useful for quickly testing that the graphics
     ./scripts/build-kmscube
     ./scripts/build-weston
 
-Note that the binaries and libraries will all be installed under `/home/ubuntu/usr`, so make sure to add `/home/ubuntu/usr/bin` to the PATH and to set LD\_LIBRARY\_PATH to `/home/ubuntu/usr/lib`. One easy way to do this is to add the following lines:
+Note that the binaries and libraries will all be installed under `/opt/nouveau`, so make sure to add `/opt/nouveau/bin` to the PATH and to set LD\_LIBRARY\_PATH to `/opt/nouveau/lib`. One easy way to do this is to add the following lines:
 
-    export PATH="$HOME/usr/bin:$PATH"
-    export LD_LIBRARY_PATH="$HOME/usr/lib:$LD_LIBRARY_PATH"
-    export PKG_CONFIG_PATH="$HOME/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
+    NV_PREFIX="/opt/nouveau"
+    export PATH="$NV_PREFIX/bin:$PATH"
+    export LD_LIBRARY_PATH="$NV_PREFIX/lib:$LD_LIBRARY_PATH"
+    export PKG_CONFIG_PATH="$NV_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 to `/home/ubuntu/.profile` on the target FS.
 
