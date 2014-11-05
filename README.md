@@ -100,14 +100,6 @@ Then you can choose to add kmscube (useful for quickly testing that the graphics
 
 Note that the binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
 
-NFS Boot
---------
-If you plan to boot your L4T image via NFS, make sure that the /etc/network/interfaces file contains the following line:
-
-    iface eth0 inet manual
-
-It will prevent Ubuntu from reconfiguring the network interface and thus losing the NFS connection at boot.
-
 Errors During Boot
 ------------------
 During boot you will encounter the following errors while Nouveau is probed:
