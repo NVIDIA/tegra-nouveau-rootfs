@@ -102,7 +102,23 @@ Note that the binaries and libraries will all be installed under `/opt/nouveau` 
 
 Installing to Boot Device
 -------------------------
-Copy the contents of `out/target/L4T` to your boot device (be it SD card or internal eMMC), and U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and you should be able to run both `kmscube` and `weston-launch`.
+You will then need to Copy the contents of `out/target/L4T` to your boot device (which could be a SD card or internal eMMC).
+
+To copy the root filesystem to a mounted (and empty) ext4-formatted SD card:
+
+    sudo rsync -aAXv $TOP/out/target/L4T/* /path/to/mount/point/
+
+If you prefer to sync to the internal eMMC, do the following:
+
+1. turn your Jetson TK1 on, and on the serial console press a key to enter the U-boot menu.
+2. connect a USB cable to the Jetson's micro-USB port.
+3. type `ums 0 mmc 0` in the U-boot console. A new mass storage device should be detected on your host PC: this is the eMMC of your Jetson board.
+4. partition the eMMC to have one single ext4 partition.
+5. mount the eMMC partition and run the rsync command above to copy the system to the eMMC.
+6. unmount the eMMC partition. This might take a while as cached data is flushed to the device.
+7. press ctrl+c in the U-boot console and switch the board off.
+
+Then turn your board on (after inserting the SD card if you synced to it!). U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and you should be able to run both `kmscube` and `weston-launch`.
 
 Errors During Boot
 ------------------
