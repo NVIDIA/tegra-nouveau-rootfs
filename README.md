@@ -139,6 +139,12 @@ Once your FS is booted and the correct environment variables set, you can run km
 
 As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
 
+Tuning the GPU Frequency
+------------------------
+By default, the GPU will run at a low frequency of 198 Mhz. You can increase this by writing into `/sys/class/gpu/card1/device/pstate`. Run `cat` on this file to display the valid frequencies and their code. Then, if you want to run the GPU at 684 Mhz:
+
+    echo 0b >/sys/class/drm/card1/device/pstate
+
 Authors
 -------
 These scripts have been crafted with love by Lauri Peltonen and Alexandre Courbot, two NVIDIA engineers. Please report bugs and issues on Github.
