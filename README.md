@@ -57,13 +57,13 @@ If you prefer to operate on a fresh L4T installation, then run the following scr
 
     ./scripts/download-rootfs
 
-It will download the latest L4T base image as well as the proprietary L4T graphics stack, and extract both under `out/target/L4T`. You will need `sudo` rights to preserve the permissions of the target filesystem.
+It will download the latest L4T base image as well as (optionally) the proprietary L4T graphics stack, and extract both under `out/target/L4T`. You will need the ability to run `sudo` in order to preserve the permissions of the target filesystem.
 
 Now that the target filesystem can be accessed under the expected location, we will need to make sure it contains all the libraries requires to let us cross-compile the OSS stack against it:
 
     ./scripts/prepare-rootfs
 
-This script downloads a static qemu-arm binary and uses it under a chroot to run `apt-get` under the target filesystem and install all the required libraries.
+This script downloads a static qemu-arm binary and uses it under a chroot to run `apt-get` under the target filesystem and install all the required libraries. It also requires `sudo` to run.
 
 Compiling Kernel Components
 ---------------------------
@@ -98,7 +98,9 @@ Then you can choose to add kmscube (useful for quickly testing that the graphics
     ./scripts/build-kmscube
     ./scripts/build-weston
 
-Note that the binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
+The binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
+
+Note that the `build-weston` script requires `sudo` in order to set the SUID bit to the `weston-launch` script.
 
 Installing to Boot Device
 -------------------------
