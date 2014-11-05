@@ -100,6 +100,10 @@ Then you can choose to add kmscube (useful for quickly testing that the graphics
 
 Note that the binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
 
+Installing to Boot Device
+-------------------------
+Copy the contents of `out/target/L4T` to your boot device (be it SD card or internal eMMC), and U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and you should be able to run both `kmscube` and `weston-launch`.
+
 Errors During Boot
 ------------------
 During boot you will encounter the following errors while Nouveau is probed:
@@ -118,10 +122,6 @@ Once your FS is booted and the correct environment variables set, you can run km
     kmscube /dev/dri/card0 /dev/dri/renderD128
 
 As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
-
-Conclusion
-----------
-You should be all set now - copy the contents of `out/target/L4T` to your boot device (be it SD card or internal eMMC), and U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and if you set your environment variables properly, you will be able to run both `kmscube` and `weston-launch`.
 
 Authors
 -------
