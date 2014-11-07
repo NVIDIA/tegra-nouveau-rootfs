@@ -24,7 +24,7 @@ You will need a bunch of tools to download and cross-compile the various project
 
 Under Ubuntu 14.04, the following command will get you all set:
 
-    $ sudo apt-get install git build-essential wget phablet-tools autoconf automake libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc u-boot-tools
+    $ sudo apt-get install git build-essential wget phablet-tools autoconf automake libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc u-boot-tools glib-2.0
 
 U-Boot
 ------
