@@ -4,7 +4,7 @@
   <remote name="baserock" fetch="http://git.baserock.org/git/"/>
   <remote name="nvidia" fetch="https://github.com/NVIDIA/"/>
   <remote name="gnurou" fetch="https://github.com/Gnurou/"/>
-  <remote name="tagr" fetch="git://gitorious.org/thierryreding/"/>
+  <remote name="tagr" fetch="https://gitorious.org/thierryreding/"/>
 
   <default revision="master"/>
 
