@@ -4,7 +4,6 @@
   <remote name="baserock" fetch="http://git.baserock.org/git/"/>
   <remote name="nvidia" fetch="https://github.com/NVIDIA/"/>
   <remote name="gnurou" fetch="https://github.com/Gnurou/"/>
-  <remote name="tagr" fetch="https://gitorious.org/thierryreding/"/>
 
   <default revision="master"/>
 
@@ -22,6 +21,6 @@
   <project path="drm" name="drm.git" remote="gnurou" revision="gk20a"/>
   <project path="wayland" name="wayland/wayland.git" remote="freedesktop" revision="refs/tags/1.6.0"/>
   <project path="mesa" name="mesa.git" remote="gnurou" revision="gk20a"/>
-  <project path="kmscube" name="kmscube.git" remote="tagr"/>
+  <project path="kmscube" name="kmscube.git" remote="gnurou" revision="gk20a"/>
   <project path="weston" name="delta/weston.git" remote="baserock" revision="baserock/james/weston"/>
 </manifest>
