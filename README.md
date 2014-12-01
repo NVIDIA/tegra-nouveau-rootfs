@@ -89,6 +89,7 @@ Compiling User-space Components
 -------------------------------
 The essential user-space components can be compiled as follows:
 
+    ./scripts/build-pthread-stubs
     ./scripts/build-drm
     ./scripts/build-wayland
     ./scripts/build-mesa
