@@ -121,11 +121,11 @@ If you prefer to sync to the internal eMMC, do the following:
 6. unmount the eMMC partition. This might take a while as cached data is flushed to the device.
 7. press ctrl+c in the U-boot console and switch the board off.
 
-Then turn your board on (after inserting the SD card if you synced to it!). U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and you should be able to run both `kmscube` and `weston-launch`.
+Then turn your board on (after inserting the SD card if you synced to it!). U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and you should be presented with a login prompt (login with user `ubuntu` and password `ubuntu`).
 
 Errors During Boot
 ------------------
-During boot you will encounter the following errors while Nouveau is probed:
+During boot you may encounter the following errors while Nouveau is probed:
 
     nouveau E[    PBUS][57000000.gpu] MMIO read of 0x00000000 FAULT at 0x17e8dc
     ...
