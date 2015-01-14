@@ -22,5 +22,5 @@
   <project path="wayland" name="wayland/wayland.git" remote="freedesktop" revision="refs/tags/1.6.0"/>
   <project path="mesa" name="mesa.git" remote="gnurou" revision="gk20a"/>
   <project path="kmscube" name="kmscube.git" remote="gnurou" revision="gk20a"/>
-  <project path="weston" name="delta/weston.git" remote="baserock" revision="baserock/james/weston"/>
+  <project path="weston" name="weston.git" remote="gnurou" revision="baserock/james/weston"/>
 </manifest>
