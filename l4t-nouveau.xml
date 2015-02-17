@@ -19,8 +19,8 @@
   <!-- User-space libraries and programs -->
   <project path="pthread-stubs" name="xcb/pthread-stubs.git" remote="freedesktop" revision="refs/tags/0.3"/>
   <project path="drm" name="drm.git" remote="gnurou" revision="gk20a"/>
-  <project path="wayland" name="wayland/wayland.git" remote="freedesktop" revision="refs/tags/1.6.0"/>
   <project path="libinput" name="wayland/libinput.git" remote="freedesktop" revision="refs/tags/0.10.0"/>
+  <project path="wayland" name="wayland/wayland.git" remote="freedesktop" revision="refs/tags/1.7.0"/>
   <project path="mesa" name="mesa.git" remote="gnurou" revision="gk20a"/>
   <project path="kmscube" name="kmscube.git" remote="gnurou" revision="gk20a"/>
   <project path="weston" name="weston.git" remote="gnurou" revision="baserock/james/weston"/>
