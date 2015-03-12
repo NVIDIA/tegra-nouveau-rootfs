@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="freedesktop" fetch="git://anongit.freedesktop.org/"/>
+  <remote name="freedesktop" fetch="http://anongit.freedesktop.org/git/"/>
   <remote name="baserock" fetch="http://git.baserock.org/git/"/>
   <remote name="nvidia" fetch="https://github.com/NVIDIA/"/>
   <remote name="gnurou" fetch="https://github.com/Gnurou/"/>
