@@ -21,7 +21,7 @@
   <project path="drm" name="drm.git" remote="gnurou" revision="master"/>
   <project path="libinput" name="wayland/libinput.git" remote="freedesktop" revision="refs/tags/0.10.0"/>
   <project path="wayland" name="wayland/wayland.git" remote="freedesktop" revision="refs/tags/1.7.0"/>
-  <project path="mesa" name="mesa.git" remote="gnurou" revision="gk20a"/>
+  <project path="mesa" name="mesa.git" remote="gnurou" revision="master"/>
   <project path="kmscube" name="kmscube.git" remote="gnurou" revision="gk20a"/>
   <project path="weston" name="delta/weston.git" remote="baserock" revision="baserock/weston-1.7.0/tegra"/>
 </manifest>
