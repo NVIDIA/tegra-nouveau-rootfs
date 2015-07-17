@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+  <remote name="kernel" fetch="git://git.kernel.org/pub/scm/linux/kernel/git/"/>
   <remote name="freedesktop" fetch="http://anongit.freedesktop.org/git/"/>
   <remote name="baserock" fetch="http://git.baserock.org/git/"/>
   <remote name="nvidia" fetch="https://github.com/NVIDIA/"/>
@@ -14,7 +15,7 @@
   <project path="tegra-uboot-scripts" name="tegra-uboot-scripts.git" remote="nvidia"/>
   <project path="linux" name="linux.git" remote="gnurou" revision="staging/nouveau"/>
   <project path="nouveau" name="nouveau.git" remote="gnurou" revision="staging"/>
-  <project path="linux-firmware" name="linux-firmware.git" remote="gnurou" revision="staging"/>
+  <project path="linux-firmware" name="firmware/linux-firmware.git" remote="kernel" revision="master"/>
 
   <!-- User-space libraries and programs -->
   <project path="pthread-stubs" name="xcb/pthread-stubs.git" remote="freedesktop" revision="refs/tags/0.3"/>
