@@ -25,4 +25,11 @@
   <project path="mesa" name="mesa/mesa.git" remote="freedesktop" revision="refs/tags/mesa-11.0.0-rc2"/>
   <project path="kmscube" name="kmscube.git" remote="gnurou" revision="gk20a"/>
   <project path="weston" name="delta/weston.git" remote="baserock" revision="baserock/weston-1.8.0/tegra"/>
+
+  <!--
+  <project path="xserver" name="xorg/xserver.git" remote="freedesktop"/>
+  <project path="xf86-input-evdev" name="xorg/driver/xf86-input-evdev.git" remote="freedesktop"/>
+  <project path="xkeyboard-config" name="xkeyboard-config.git" remote="freedesktop"/>
+  <project path="xkbcomp" name="xorg/app/xkbcomp.git" remote="freedesktop"/>
+  -->
 </manifest>
