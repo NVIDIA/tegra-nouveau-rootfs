@@ -114,8 +114,10 @@ Installing to Boot Device
 You will then need to Copy the contents of `out/target/L4T` to your boot device (which could be a SD card or internal eMMC).
 
 To copy the root filesystem to a mounted (and empty) ext4-formatted SD card:
+(replace the L4T target folder by ArchLinuxArm or $DISTRO if you have chosen ArchLinux rootfs)
 
-    sudo rsync -aAXv $TOP/out/target/L4T/* /path/to/mount/point/
+    sudo rsync -aAXv $TOP/out/target/L4T/* /path/to/mount/point/ 
+
 
 If you prefer to sync to the internal eMMC, do the following:
 
