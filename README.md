@@ -53,11 +53,16 @@ Preparing the Target Filesystem
 -------------------------------
 All the scripts expect to find your L4T filesystem under `out/target/L4T`. If you wish to use an already-existing rootfs, simply create a link from `out/target/L4T` to the root of your L4T filesystem.
 
+If you prefer to operate on a fresh ArchLinux installation, define the DISTRO value before downloading rootfs, as here:
+
+    export DISTRO=ArchLinuxArm
+
 If you prefer to operate on a fresh L4T installation, then run the following script:
 
     ./scripts/download-rootfs
 
 It will download the latest L4T base image as well as (optionally) the proprietary L4T graphics stack, and extract both under `out/target/L4T`. You will need the ability to run `sudo` in order to preserve the permissions of the target filesystem.
+
 
 Now that the target filesystem can be accessed under the expected location, we will need to make sure it contains all the libraries requires to let us cross-compile the OSS stack against it:
 
