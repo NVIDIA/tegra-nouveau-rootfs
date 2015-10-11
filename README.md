@@ -19,12 +19,18 @@ You will need a bunch of tools to download and cross-compile the various project
 - repo
 - git
 - autotools
+- uboot-tools
 - basic 32-bit libraries
 - Wayland (for the wayland-scanner program)
 
 Under Ubuntu 14.04, the following command will get you all set:
 
     $ sudo apt-get install git build-essential wget phablet-tools autoconf automake libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc u-boot-tools glib-2.0 realpath libffi-dev
+
+Under Archlinux (2015-10-09), run the following commands:
+
+    $ yaourt -S aur/repo # Or install the package by downloading it from AUR yourself
+    $ sudo pacman -Sy base-devel wget git crypto++ libffi uboot-tools wayland
 
 U-Boot
 ------
