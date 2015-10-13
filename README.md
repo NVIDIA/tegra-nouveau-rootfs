@@ -1,16 +1,14 @@
-Linux For Tegra (L4T) Nouveau Installer Scripts
-===============================================
+Tegra Nouveau Installer Scripts
+===============================
 These scripts aim at providing an simple way to enable the open-source graphics stack (Nouveau/Mesa) on Jetson TK1. It does so by automating the process of cross-compiling the necessary software and adapting a new or already-existing L4T root filesystem to run Nouveau/Mesa as an alternative to the closed-source graphics stack.
 
-The following components can be installed to a L4T root FS by following the instructions given in this document:
-- Linux kernel
-- Nouveau modules
-- GPU firmware
-- drm
-- Wayland
-- Mesa
-- kmscube
-- Weston
+Following the instructions of this file will perform the following:
+- Download an Arch Linux ARM image
+- Update the image and install required packages on it
+- Compile the Linux kernel and Nouveau kernel driver
+- Compile a few DRM applications to play with (kmscube, weston, X)
+
+Linux and Nouveau need to be compiled because there are still out-of-tree patches that we need. DRM applications currently need a few specific changes to work on Jetson TK1 (this is going to be fixed upstream), and thus also need to be compiled.
 
 Host System Preparation
 -----------------------
@@ -42,9 +40,9 @@ Syncing
 -------
 All the required projects are synced using Google's `repo` tool:
 
-    mkdir l4t-nouveau
-    cd l4t-nouveau
-    repo init -u https://github.com/NVIDIA/tegra-nouveau-rootfs.git -m l4t-nouveau.xml
+    mkdir tegra-nouveau-rootfs
+    cd tegra-nouveau-rootfs
+    repo init -u https://github.com/NVIDIA/tegra-nouveau-rootfs.git -m tegra-nouveau.xml
     repo sync -j4 -c
 
 Once all the sources are downloaded, set the TOP environment variable:
@@ -57,24 +55,23 @@ then download the cross-compilation toolchain that we will use:
 
 Preparing the Target Filesystem
 -------------------------------
-All the scripts expect to find your L4T filesystem under `out/target/L4T`. If you wish to use an already-existing rootfs, simply create a link from `out/target/L4T` to the root of your L4T filesystem.
+All the scripts expect to find your filesystem under `out/target/ArchLinuxArm`. If you wish to use an already-existing rootfs, simply create a link from `out/target/ArchLinuxArm` to the root of your existing filesystem.
 
-If you prefer to operate on a fresh ArchLinux installation, define the DISTRO value before downloading rootfs, as here:
+If you prefer to operate on a L4T (Ubuntu-based, unsupported!) installation, define the DISTRO value before downloading rootfs, as here:
 
-    export DISTRO=ArchLinuxArm
+    export DISTRO=L4T
 
-If you prefer to operate on a fresh L4T installation, then run the following script:
+Regardless of your choice is distro, run the following script to download the root filesystem:
 
     ./scripts/download-rootfs
 
-It will download the latest L4T base image as well as (optionally) the proprietary L4T graphics stack, and extract both under `out/target/L4T`. You will need the ability to run `sudo` in order to preserve the permissions of the target filesystem.
+It will download the latest Arch Linux ARM base image, and extract both under `out/target/ArchLinuxArm`. You will need the ability to run `sudo` in order to preserve the permissions of the target filesystem.
 
-
-Now that the target filesystem can be accessed under the expected location, we will need to make sure it contains all the libraries requires to let us cross-compile the OSS stack against it:
+Now that the target filesystem can be accessed under the expected location, we will need to make sure it contains all the libraries requires to let us cross-compile the graphics stack against it:
 
     ./scripts/prepare-rootfs
 
-This script downloads a static qemu-arm binary and uses it under a chroot to run `apt-get` under the target filesystem and install all the required libraries. It also requires `sudo` to run.
+This script downloads a static qemu-arm binary and uses it under a chroot to run `pacman` under the target filesystem and install all the required libraries. It also requires `sudo` to run.
 
 Compiling Kernel Components
 ---------------------------
@@ -90,14 +87,17 @@ The Nouveau kernel modules can be build and installed similarly:
 
 They will end in `/lib/modules/KERNEL_VERSION/extra` on the target FS.
 
+<!---
 Finally install the required GPU firmware:
 
     ./scripts/install-firmware
 
 The firmware will be installed in `/lib/firmware/nvidia` on the target FS.
+-->
 
 Compiling User-space Components
 -------------------------------
+<!---
 The essential user-space components can be compiled as follows:
 
     ./scripts/build-pthread-stubs
@@ -105,11 +105,21 @@ The essential user-space components can be compiled as follows:
     ./scripts/build-libinput
     ./scripts/build-wayland
     ./scripts/build-mesa
+-->
+On the user-space side, Mesa needs to be built:
+
+    ./scripts/build-mesa
 
 Then you can choose to add kmscube (useful for quickly testing that the graphics stack is working) and Weston (to enable a graphical UI):
 
     ./scripts/build-kmscube
     ./scripts/build-weston
+
+If you are in for more serious business, why not also install X:
+
+    ./scripts/build-xserver
+
+This will build and install a modified X server (again to support the specific Tegra use-case) with libinput support.
 
 The binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
 
@@ -117,12 +127,13 @@ Note that the `build-weston` script requires `sudo` in order to set the SUID bit
 
 Installing to Boot Device
 -------------------------
-You will then need to Copy the contents of `out/target/L4T` to your boot device (which could be a SD card or internal eMMC).
+At this stage your root filesystem is a standard Arch Linux distro, with some custom-build components in `/opt/nouveau`.
+
+In order to install it to a boot device, copy the contents of `out/target/ArchLinuxArm` to your device (which could be a SD card or internal eMMC).
 
 To copy the root filesystem to a mounted (and empty) ext4-formatted SD card:
-(replace the L4T target folder by ArchLinuxArm or $DISTRO if you have chosen ArchLinux rootfs)
 
-    sudo rsync -aAXv $TOP/out/target/L4T/* /path/to/mount/point/ 
+    sudo rsync -aAXv $TOP/out/target/ArchLinuxArm/* /path/to/mount/point/ 
 
 
 If you prefer to sync to the internal eMMC, do the following:
@@ -136,14 +147,13 @@ If you prefer to sync to the internal eMMC, do the following:
 7. press ctrl+c in the U-boot console and switch the board off.
 
 Then turn your board on (after inserting the SD card if you synced to it!). U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and you should be presented with a login prompt.
-On the L4T target, login with user `ubuntu` and password `ubuntu`. On ArchLinuxARM, use `root` for both the login and password.
+
+On Arch Linux, use `root` for both the login and password. If you chose to build a L4T target instead, login with user `ubuntu` and password `ubuntu`.
 
 Errors During Boot
 ------------------
 During boot you may encounter the following errors while Nouveau is probed:
 
-    nouveau E[    PBUS][57000000.gpu] MMIO read of 0x00000000 FAULT at 0x17e8dc
-    ...
     nouveau E[   PFIFO][57000000.gpu] unsupported engines 0x00000030
     nouveau E[     DRM] failed to create ce channel, -22
 
