@@ -1,6 +1,6 @@
 Tegra Nouveau Installer Scripts
 ===============================
-These scripts aim at providing an simple way to enable the open-source graphics stack (Nouveau/Mesa) on Jetson TK1. It does so by automating the process of cross-compiling the necessary software and adapting a new or already-existing L4T root filesystem to run Nouveau/Mesa as an alternative to the closed-source graphics stack.
+These scripts aim at providing an simple way to enable the open-source graphics stack (Nouveau/Mesa) on Jetson TK1. It does so by automating the process of cross-compiling the necessary software and adapting a new or already-existing Arch Linux root filesystem to run Nouveau/Mesa as an alternative to the closed-source graphics stack.
 
 Following the instructions of this file will perform the following:
 - Download an Arch Linux ARM image
@@ -12,14 +12,13 @@ Linux and Nouveau need to be compiled because there are still out-of-tree patche
 
 Host System Preparation
 -----------------------
-You will need a bunch of tools to download and cross-compile the various projects needed to enable Nouveau on L4T. Depending on your distribution, you will need to install:
+You will need a bunch of tools to download and cross-compile the various projects required for Nouveau on Tegra. Depending on your distribution, you will need to install:
 
 - repo
 - git
 - autotools
 - uboot-tools
 - basic 32-bit libraries
-- Wayland (for the wayland-scanner program)
 
 Under Ubuntu 14.04, the following command will get you all set:
 
@@ -57,9 +56,7 @@ Preparing the Target Filesystem
 -------------------------------
 All the scripts expect to find your filesystem under `out/target/ArchLinuxArm`. If you wish to use an already-existing rootfs, simply create a link from `out/target/ArchLinuxArm` to the root of your existing filesystem.
 
-If you prefer to operate on a L4T (Ubuntu-based, unsupported!) installation, define the DISTRO value before downloading rootfs, as here:
-
-    export DISTRO=L4T
+If you prefer to operate on a L4T (Ubuntu-based) installation, define the DISTRO environment variable to "L4T" before doing anything else. Warning, this setup is unsupported and will likely fail in the middle!
 
 Regardless of your choice is distro, run the following script to download the root filesystem:
 
