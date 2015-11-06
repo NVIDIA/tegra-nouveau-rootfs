@@ -54,7 +54,7 @@ then download the cross-compilation toolchain that we will use:
 
 Preparing the Target Filesystem
 -------------------------------
-All the scripts expect to find your filesystem under `out/target/ArchLinuxArm`. If you wish to use an already-existing rootfs, simply create a link from `out/target/ArchLinuxArm` to the root of your existing filesystem.
+All the scripts expect to find your filesystem under `out/target/arm/ArchLinuxArm`. If you wish to use an already-existing rootfs, simply create a link from `out/target/arm/ArchLinuxArm` to the root of your existing filesystem.
 
 If you prefer to operate on a L4T (Ubuntu-based) installation, define the DISTRO environment variable to "L4T" before doing anything else. Warning, this setup is unsupported and will likely fail in the middle!
 
@@ -62,7 +62,7 @@ Regardless of your choice is distro, run the following script to download the ro
 
     ./scripts/download-rootfs
 
-It will download the latest Arch Linux ARM base image, and extract both under `out/target/ArchLinuxArm`. You will need the ability to run `sudo` in order to preserve the permissions of the target filesystem.
+It will download the latest Arch Linux ARM base image, and extract both under `out/target/arm/ArchLinuxArm`. You will need the ability to run `sudo` in order to preserve the permissions of the target filesystem.
 
 Now that the target filesystem can be accessed under the expected location, we will need to make sure it contains all the libraries requires to let us cross-compile the graphics stack against it:
 
@@ -126,11 +126,11 @@ Installing to Boot Device
 -------------------------
 At this stage your root filesystem is a standard Arch Linux distro, with some custom-build components in `/opt/nouveau`.
 
-In order to install it to a boot device, copy the contents of `out/target/ArchLinuxArm` to your device (which could be a SD card or internal eMMC).
+In order to install it to a boot device, copy the contents of `out/target/arm/ArchLinuxArm` to your device (which could be a SD card or internal eMMC).
 
 To copy the root filesystem to a mounted (and empty) ext4-formatted SD card:
 
-    sudo rsync -aAXv $TOP/out/target/ArchLinuxArm/* /path/to/mount/point/ 
+    sudo rsync -aAXv $TOP/out/target/arm/ArchLinuxArm/* /path/to/mount/point/ 
 
 
 If you prefer to sync to the internal eMMC, do the following:
