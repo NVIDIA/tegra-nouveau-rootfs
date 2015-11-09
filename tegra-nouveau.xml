@@ -14,7 +14,7 @@
   <!-- Boot, Kernel and Nouveau modules -->
   <project path="tegra-uboot-scripts" name="tegra-uboot-scripts.git" remote="nvidia"/>
   <project path="linux" name="linux.git" remote="gnurou" revision="staging/nouveau"/>
-  <project path="nouveau" name="nouveau.git" remote="gnurou" revision="staging"/>
+  <project path="nouveau" name="nouveau.git" remote="gnurou" revision="staging/work"/>
   <!--
   <project path="linux-firmware" name="firmware/linux-firmware.git" remote="kernel" revision="master"/>
   -->
