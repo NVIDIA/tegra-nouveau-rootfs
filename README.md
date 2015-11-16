@@ -103,16 +103,16 @@ The firmware will be installed in `/lib/firmware/nvidia` on the target FS.
 
 Compiling User-space Components
 -------------------------------
-<!---
 The essential user-space components can be compiled as follows:
 
     ./scripts/build-pthread-stubs
     ./scripts/build-drm
+<!---
     ./scripts/build-libinput
     ./scripts/build-wayland
     ./scripts/build-mesa
 -->
-On the user-space side, Mesa needs to be built:
+Mesa also needs to be built:
 
     ./scripts/build-mesa
 
