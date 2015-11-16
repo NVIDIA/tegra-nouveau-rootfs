@@ -1,6 +1,6 @@
 Tegra Nouveau Installer Scripts
 ===============================
-These scripts aim at providing an simple way to enable the open-source graphics stack (Nouveau/Mesa) on Jetson TK1. It does so by automating the process of cross-compiling the necessary software and adapting a new or already-existing Arch Linux root filesystem to run Nouveau/Mesa as an alternative to the closed-source graphics stack.
+These scripts aim at providing an simple way to enable the open-source graphics stack (Nouveau/Mesa) on Jetson TK1/TX1. It does so by automating the process of cross-compiling the necessary software and adapting a new or already-existing Arch Linux root filesystem to run Nouveau/Mesa as an alternative to the closed-source graphics stack.
 
 Following the instructions of this file will perform the following:
 - Download an Arch Linux ARM image
@@ -8,7 +8,7 @@ Following the instructions of this file will perform the following:
 - Compile the Linux kernel and Nouveau kernel driver
 - Compile a few DRM applications to play with (kmscube, weston, X)
 
-Linux and Nouveau need to be compiled because there are still out-of-tree patches that we need. DRM applications currently need a few specific changes to work on Jetson TK1 (this is going to be fixed upstream), and thus also need to be compiled.
+Linux and Nouveau need to be compiled because there are still out-of-tree patches that we need. DRM applications currently need a few specific changes to work on Tegra systems (this is going to be fixed upstream), and thus also need to be compiled.
 
 Host System Preparation
 -----------------------
@@ -32,7 +32,7 @@ Under Archlinux (2015-10-09), run the following commands:
 
 U-Boot
 ------
-The first prerequisite is that you must use an up-to-date U-Boot as bootloader. Jetson TK1 comes with another bootloader flashed ; make sure to follow the instructions on https://github.com/NVIDIA/tegra-uboot-flasher-scripts/blob/master/README-developer.txt to easily flash U-Boot and be safe.
+The first prerequisite is that you must use an up-to-date U-Boot as bootloader. You Jetson board comes with another bootloader flashed ; make sure to follow the instructions on https://github.com/NVIDIA/tegra-uboot-flasher-scripts/blob/master/README-developer.txt to easily flash U-Boot and be safe.
 
 **Warning:** running an outdated U-Boot will cause the kernel to silently crash when loading the GPU driver!
 
@@ -42,7 +42,17 @@ All the required projects are synced using Google's `repo` tool:
 
     mkdir tegra-nouveau-rootfs
     cd tegra-nouveau-rootfs
+
+If you want to build a 32-bits image (for Jetson TK1):
+
     repo init -u https://github.com/NVIDIA/tegra-nouveau-rootfs.git -m tegra-nouveau.xml
+
+Or if you want a 64-bit image (Jetson TX1):
+
+    repo init -u https://github.com/NVIDIA/tegra-nouveau-rootfs.git -m tegra-nouveau-arm64.xml
+
+Then sync all the sources:
+
     repo sync -j4 -c
 
 Once all the sources are downloaded, set the TOP environment variable:
@@ -85,13 +95,11 @@ The Nouveau kernel modules can be build and installed similarly:
 
 They will end in `/lib/modules/KERNEL_VERSION/extra` on the target FS.
 
-<!---
 Finally install the required GPU firmware:
 
     ./scripts/install-firmware
 
 The firmware will be installed in `/lib/firmware/nvidia` on the target FS.
--->
 
 Compiling User-space Components
 -------------------------------
@@ -136,7 +144,7 @@ To copy the root filesystem to a mounted (and empty) ext4-formatted SD card:
 
 If you prefer to sync to the internal eMMC, do the following:
 
-1. turn your Jetson TK1 on, and on the serial console press a key to enter the U-boot menu.
+1. turn your board on, and on the serial console press a key to enter the U-boot menu.
 2. connect a USB cable to the Jetson's micro-USB port.
 3. type `ums 0 mmc 0` in the U-boot console. A new mass storage device should be detected on your host PC: this is the eMMC of your Jetson board.
 4. partition the eMMC to have one single ext4 partition.
@@ -162,6 +170,8 @@ Running Programs
 Once your FS is booted and the correct environment variables set, you can run kmscube as follows:
 
     kmscube /dev/dri/card0 /dev/dri/renderD128
+
+Warning: on Jetson TX1, replace "card0' with "card1"!
 
 As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
 
