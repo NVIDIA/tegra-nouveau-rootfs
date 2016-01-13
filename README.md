@@ -27,7 +27,7 @@ Under Ubuntu 14.04, the following command will get you all set:
 Under Archlinux (2015-10-09), run the following commands:
 
     $ yaourt -S aur/repo # Or install the package by downloading it from AUR yourself
-    $ sudo pacman -Sy base-devel wget git crypto++ libffi uboot-tools wayland bc python2-mako xorg-util-macros intltool
+    $ sudo pacman -Syu base-devel wget git crypto++ libffi uboot-tools wayland bc python2-mako xorg-util-macros intltool
 
 
 U-Boot
