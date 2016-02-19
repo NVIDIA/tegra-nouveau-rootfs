@@ -23,13 +23,13 @@
   <project path="libinput" name="wayland/libinput.git" remote="freedesktop" revision="refs/tags/0.10.0"/>
   -->
   <project path="pthread-stubs" name="xcb/pthread-stubs.git" remote="freedesktop" revision="refs/tags/0.3"/>
-  <project path="drm" name="mesa/drm" remote="freedesktop" revision="refs/tags/2.4.62"/>
+  <project path="drm" name="mesa/drm" remote="freedesktop" revision="refs/tags/2.4.67"/>
   <project path="wayland" name="wayland/wayland.git" remote="freedesktop" revision="refs/tags/1.8.1"/>
-  <project path="mesa" name="mesa/mesa.git" remote="freedesktop" revision="ebbe6cdad7ab082d2b191fe6c7c0eaa6921d55de"/>
+  <project path="mesa" name="mesa/mesa.git" remote="freedesktop" revision="d7c4ffd1ee08fa93a138926187f354aded6edde4"/>
   <project path="kmscube" name="kmscube.git" remote="gnurou" revision="gk20a"/>
   <project path="weston" name="weston.git" remote="gnurou" revision="gk20a"/>
   <project path="xserver" name="xserver.git" remote="gnurou" revision="gk20a"/>
-  <project path="xf86-input-libinput" name="xorg/driver/xf86-input-libinput.git" remote="freedesktop" revision="refs/tags/xf86-input-libinput-0.14.0"/>
-  <project path="xkeyboard-config" name="xkeyboard-config.git" remote="freedesktop" revision="refs/tags/xkeyboard-config-2.15"/>
-  <project path="xkbcomp" name="xorg/app/xkbcomp.git" remote="freedesktop" revision="refs/tags/xkbcomp-1.3.0"/>
+  <project path="xf86-input-libinput" name="xorg/driver/xf86-input-libinput.git" remote="freedesktop" revision="refs/tags/xf86-input-libinput-0.16.0"/>
+  <project path="xkeyboard-config" name="xkeyboard-config.git" remote="freedesktop" revision="refs/tags/xkeyboard-config-2.17"/>
+  <project path="xkbcomp" name="xorg/app/xkbcomp.git" remote="freedesktop" revision="refs/tags/xkbcomp-1.3.1"/>
 </manifest>
