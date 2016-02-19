@@ -12,7 +12,7 @@
   <project path="scripts" name="tegra-rootfs-scripts.git" remote="nvidia"/>
 
   <!-- Boot, Kernel and Nouveau modules -->
-  <project path="linux" name="linux.git" remote="gnurou" revision="staging/nouveau"/>
+  <project path="linux" name="linux.git" remote="gnurou" revision="staging/work"/>
   <project path="nouveau" name="nouveau.git" remote="gnurou" revision="staging/work"/>
   <!--
   <project path="linux-firmware" name="firmware/linux-firmware.git" remote="kernel" revision="master"/>
