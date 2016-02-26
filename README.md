@@ -53,22 +53,19 @@ All the required projects are synced using Google's `repo` tool:
 
     mkdir tegra-nouveau-rootfs
     cd tegra-nouveau-rootfs
-
-If you want to build a 32-bits image (for Jetson TK1):
-
     repo init -u https://github.com/NVIDIA/tegra-nouveau-rootfs.git -m tegra-nouveau.xml
 
-Or if you want a 64-bit image (Jetson TX1):
-
-    repo init -u https://github.com/NVIDIA/tegra-nouveau-rootfs.git -m tegra-nouveau-arm64.xml
-
-Then sync all the sources:
+Sync all the sources:
 
     repo sync -j4 -c
 
 Once all the sources are downloaded, set the TOP environment variable:
 
     export TOP=$PWD
+
+By default an arm32 (for Jetson TK1) image is built. If you want a 64-bit image, set the ARCH environment variable:
+
+    export ARCH=aarch64
 
 then download the cross-compilation toolchain that we will use:
 
