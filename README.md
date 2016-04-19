@@ -29,7 +29,7 @@ Under Archlinux (2015-10-09), run the following commands:
 
     $ yaourt -S aur/repo # Or install the packages by downloading them from AUR yourself
     $ yaourt -S aur/proot
-    $ sudo pacman -Syu base-devel wget git crypto++ libffi uboot-tools wayland bc python2-mako xorg-util-macros intltool
+    $ sudo pacman -Syu --needed base-devel coreutils wget git crypto++ libffi uboot-tools wayland bc python2-mako xorg-util-macros intltool
 
 Note on Root Requirement
 ------------------------
