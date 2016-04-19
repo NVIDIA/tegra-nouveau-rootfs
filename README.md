@@ -23,7 +23,7 @@ You will need a bunch of tools to download and cross-compile the various project
 
 Under Ubuntu 14.04, the following command will get you all set:
 
-    $ sudo apt-get install git build-essential wget proot phablet-tools autoconf automake libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc u-boot-tools glib-2.0 realpath libffi-dev xutils-dev
+    $ sudo apt-get install git build-essential wget proot phablet-tools autoconf automake libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc u-boot-tools glib-2.0 realpath libffi-dev xutils-dev python-mako
 
 Under Archlinux (2015-10-09), run the following commands:
 
