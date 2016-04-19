@@ -159,6 +159,17 @@ Then turn your board on (after inserting the SD card if you synced to it!). U-bo
 
 On Arch Linux, use `root` for both the login and password.
 
+Network Boot
+------------
+The build system image can easily be network-booted. However if you do so, you need to take an extra step to prevent systemd from disabling the network interface used for boot.
+
+On the target filesystem, edit (or create it if it does not exist) the file corresponding to your boot interface in `/etc/systemd/network/` (e.g. `eth0.network` if you are booting on the Jetson TK1 network interface) and add the following section:
+
+    [DHCP]
+    CriticalConnection=true
+
+If you don't do this, you will get messages saying that the NFS server is not responding and boot will remain stuck.
+
 Errors During Boot
 ------------------
 During boot you may encounter the following errors while Nouveau is probed:
