@@ -109,15 +109,18 @@ The firmware will be installed in `/lib/firmware/nvidia` on the target FS.
 
 Compiling User-space Components
 -------------------------------
-The versions of `libdrm` and `mesa` provided by Arch Linux are recent enough to support Jetson TK1 and TX1. However, if you want to hack on them you can build and install custom versions:
+You need to compile libdrm with an extra option that is not enabled by default on distros:
 
     ./scripts/build-pthread-stubs
     ./scripts/build-drm
-    ./scripts/build-mesa
 <!---
     ./scripts/build-libinput
     ./scripts/build-wayland
 -->
+
+Compiling Mesa is not required - the one provided by Arch Linux is recent enough to support Jetson TK1 and TX1. You can still compile it if you plan to hack on it:
+
+    ./scripts/build-mesa
 
 Then you can choose to add kmscube (useful to quickly confirm that the graphics stack is working) and Weston (to enable a graphical UI):
 
