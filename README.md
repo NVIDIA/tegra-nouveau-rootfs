@@ -75,8 +75,6 @@ Preparing the Target Filesystem
 -------------------------------
 All the scripts expect to find your filesystem under `out/target/arm/ArchLinuxArm`. If you wish to use an already-existing rootfs, simply create a link from `out/target/arm/ArchLinuxArm` to the root of your existing filesystem.
 
-If you prefer to operate on a L4T (Ubuntu-based) installation, define the DISTRO environment variable to "L4T" before doing anything else. Warning, this setup is unsupported and will likely fail in the middle!
-
 Regardless of your choice is distro, run the following script to download the root filesystem:
 
     ./scripts/download-rootfs
@@ -95,7 +93,7 @@ We should now be able to cross-compile the Linux kernel:
 
     ./scripts/build-linux
 
-This script will install the kernel under /boot/zImage-upstream of the target FS and link /boot/zImage to it, after having renamed any existing kernel binary to /boot/zImage-l4t. Finally, it will add a U-boot script that will boot the upstream kernel in place of the L4T one.
+This script will install the kernel under /boot/zImage-upstream of the target FS and link /boot/zImage to it, after having renamed any existing kernel binary to /boot/zImage-l4t. Finally, it will add a U-boot script that will boot the upstream kernel in place of the one provided by the distro.
 
 The Nouveau kernel modules can be build and installed similarly:
 
@@ -162,7 +160,7 @@ If you prefer to sync to the internal eMMC, do the following:
 
 Then turn your board on (after inserting the SD card if you synced to it!). U-boot should start the kernel we just cross-compiled. The Nouveau modules will then be loaded in turn, and you should be presented with a login prompt.
 
-On Arch Linux, use `root` for both the login and password. If you chose to build a L4T target instead, login with user `ubuntu` and password `ubuntu`.
+On Arch Linux, use `root` for both the login and password.
 
 Errors During Boot
 ------------------
