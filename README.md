@@ -109,15 +109,15 @@ The firmware will be installed in `/lib/firmware/nvidia` on the target FS.
 
 Compiling User-space Components
 -------------------------------
-The versions of libdrm and mesa provided by Arch Linux are recent enough to support Jetson TK1 and TX1. However, if you want to hack on them you can build and install custom versions:
+The versions of `libdrm` and `mesa` provided by Arch Linux are recent enough to support Jetson TK1 and TX1. However, if you want to hack on them you can build and install custom versions:
 
     ./scripts/build-pthread-stubs
     ./scripts/build-drm
+    ./scripts/build-mesa
 <!---
     ./scripts/build-libinput
     ./scripts/build-wayland
 -->
-    ./scripts/build-mesa
 
 Then you can choose to add kmscube (useful to quickly confirm that the graphics stack is working) and Weston (to enable a graphical UI):
 
@@ -128,9 +128,9 @@ If you are in for more serious business, why not also install X:
 
     ./scripts/build-xserver
 
-This will build and install a modified X server (again to support the specific Tegra use-case) with libinput support.
+This will build and install a modified X server (again to support the specific Tegra use-case) with libinput support. It will use the modesetting driver and GLamor for acceleration.
 
-The binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
+All binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
 
 Note that the `build-weston` script requires `sudo` in order to set the SUID bit to the `weston-launch` script.
 
