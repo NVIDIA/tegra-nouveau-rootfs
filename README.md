@@ -43,7 +43,7 @@ Make sure that you can run sudo, and be ready to enter the root password if requ
 
 U-Boot
 ------
-L4T R23 uses U-boot as a default bootloader and it can be used to boot upstream as well. If you don't have an up-to-date U-boot, or wish to use upstream U-boot, please follow the instructions on https://github.com/NVIDIA/tegra-uboot-flasher-scripts/blob/master/README-developer.txt.
+The first prerequisite is that you must use an up-to-date U-Boot as bootloader. You Jetson board comes with another bootloader flashed ; make sure to follow the instructions on https://github.com/NVIDIA/tegra-uboot-flasher-scripts/blob/master/README-developer.txt to easily flash U-Boot and be safe.
 
 **Warning:** running an outdated U-Boot will cause the kernel to silently crash when loading the GPU driver!
 
