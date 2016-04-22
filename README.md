@@ -23,13 +23,13 @@ You will need a bunch of tools to download and cross-compile the various project
 
 Under Ubuntu 14.04, the following command will get you all set:
 
-    $ sudo apt-get install git build-essential wget proot phablet-tools autoconf automake libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc u-boot-tools glib-2.0 realpath libffi-dev xutils-dev python-mako intltool
+    $ sudo apt-get install git build-essential wget proot phablet-tools autoconf automake libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc u-boot-tools glib-2.0 realpath libffi-dev xutils-dev python-mako intltool libxml2-dev
 
 Under Archlinux (2015-10-09), run the following commands:
 
     $ yaourt -S aur/repo # Or install the packages by downloading them from AUR yourself
     $ yaourt -S aur/proot
-    $ sudo pacman -Syu --needed base-devel coreutils wget git crypto++ libffi uboot-tools wayland bc python2-mako xorg-util-macros intltool
+    $ sudo pacman -Syu --needed base-devel coreutils wget git crypto++ libffi uboot-tools wayland bc python2-mako xorg-util-macros intltool libxml2
 
 Note on Root Requirement
 ------------------------
