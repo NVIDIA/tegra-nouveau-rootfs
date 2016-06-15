@@ -182,8 +182,6 @@ Once your FS is booted and the correct environment variables set, you can run km
 
     kmscube /dev/dri/card0 /dev/dri/renderD128
 
-Warning: on Jetson TX1, replace "card0' with "card1"!
-
 As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
 
 Tuning the GPU Frequency
