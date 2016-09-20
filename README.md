@@ -103,7 +103,7 @@ They will end in `/lib/modules/KERNEL_VERSION/extra` on the target FS.
 
 Compiling User-space Components
 -------------------------------
-You need to compile libdrm with an extra option that is not enabled by default on distros:
+You need to compile libdrm from a custom repository that adds support for FB modifiers on Tegra:
 
     ./scripts/build-pthread-stubs
     ./scripts/build-drm
@@ -180,7 +180,7 @@ Running Programs
 ----------------
 Once your FS is booted and the correct environment variables set, you can run kmscube as follows:
 
-    kmscube /dev/dri/card0 /dev/dri/renderD128
+    kmscube
 
 As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
 
