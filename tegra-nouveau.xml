@@ -15,8 +15,8 @@
   <project path="linux" name="linux.git" remote="gnurou" revision="staging/work"/>
   <!--
   <project path="nouveau" name="nouveau.git" remote="gnurou" revision="staging/work"/>
-  <project path="linux-firmware" name="firmware/linux-firmware.git" remote="kernel" revision="master"/>
   -->
+  <project path="linux-firmware" name="firmware/linux-firmware.git" remote="kernel" revision="master"/>
 
 
   <!-- User-space libraries and programs -->

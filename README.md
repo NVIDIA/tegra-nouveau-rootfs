@@ -166,6 +166,10 @@ Once your FS is booted and the correct environment variables set, you can run km
 
 As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
 
+Known Issues
+------------
+Buffers are not properly synced between the render and display nodes, so tearing/incomplete buffers display may happen. This seems to particularly happen when Weston starts. Working on a fix for this.
+
 Tuning the GPU Frequency
 ------------------------
 By default, the GPU will run at a low frequency. You can increase it by writing into `/sys/kernel/debug/dri/128/pstate`. Run `cat` on this file to display the valid frequencies and their code. Then, if you want to run the GPU at 684 Mhz:
