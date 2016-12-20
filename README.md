@@ -162,7 +162,7 @@ Once your FS is booted and the correct environment variables set, you can run km
 
     kmscube
 
-'startx' should give you a GLamor accelerated X environment capable of running GLX programs.
+`startx` should give you a GLamor accelerated X environment capable of running GLX programs.
 
 As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
 
