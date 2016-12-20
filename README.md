@@ -87,49 +87,29 @@ Now that the target filesystem can be accessed under the expected location, we w
 
 This script downloads a static qemu-arm binary and uses it under a chroot to run `pacman` under the target filesystem and install all the required libraries. It also requires `sudo` to run.
 
-Compiling Kernel Components
----------------------------
+Compiling Kernel
+----------------
 We should now be able to cross-compile the Linux kernel:
 
     ./scripts/build-linux
 
 This script will install the kernel under /boot/zImage-upstream of the target FS and link /boot/zImage to it, after having renamed any existing kernel binary to /boot/zImage-l4t. Finally, it will add a U-boot script that will boot the upstream kernel in place of the one provided by the distro.
 
-The Nouveau kernel modules can be build and installed similarly:
+The Nouveau driver provided in this kernel is recent enough for both Jetson TK1 and TX1.
 
-    ./scripts/build-nouveau
-
-They will end in `/lib/modules/KERNEL_VERSION/extra` on the target FS.
-
-Compiling User-space Components
--------------------------------
-You need to compile libdrm from a custom repository that adds support for FB modifiers on Tegra:
-
-    ./scripts/build-pthread-stubs
-    ./scripts/build-drm
-<!---
-    ./scripts/build-libinput
-    ./scripts/build-wayland
--->
-
-Compiling Mesa is not required - the one provided by Arch Linux is recent enough to support Jetson TK1 and TX1. You can still compile it if you plan to hack on it:
+Compiling Mesa
+--------------
+Due to the use of render-nodes, user-space applications using KMS had to be patched and recompiled. Thanksfully this is not necessary anymore if using a custom Mesa:
 
     ./scripts/build-mesa
 
-Then you can choose to add kmscube (useful to quickly confirm that the graphics stack is working) and Weston (to enable a graphical UI):
+With this version built, X (modesetting +GLamor), Weston, and other KMS programs should all work and Mesa will take care of doing the plumbing between the render and display nodes.
+
+You can compile and install kmscube, a simple program that will allow you to test that everything works correctly:
 
     ./scripts/build-kmscube
-    ./scripts/build-weston
-
-If you are in for more serious business, why not also install X:
-
-    ./scripts/build-xserver
-
-This will build and install a modified X server (again to support the specific Tegra use-case) with libinput support. It will use the modesetting driver and GLamor for acceleration.
 
 All binaries and libraries will all be installed under `/opt/nouveau` by default. The `prepare-rootfs` script ran previously added the necessary environment variables to `/etc/profile.d/nouveau.sh` to make them available in the PATH.
-
-Note that the `build-weston` script requires `sudo` in order to set the SUID bit to the `weston-launch` script.
 
 Installing to Boot Device
 -------------------------
@@ -182,6 +162,8 @@ Once your FS is booted and the correct environment variables set, you can run km
 
     kmscube
 
+'startx' should give you a GLamor accelerated X environment capable of running GLX programs.
+
 As for weston, run `weston-launch` from a physical tty (e.g. keyboard and display, not ssh or serial). 
 
 Tuning the GPU Frequency
@@ -189,6 +171,10 @@ Tuning the GPU Frequency
 By default, the GPU will run at a low frequency. You can increase it by writing into `/sys/kernel/debug/dri/128/pstate`. Run `cat` on this file to display the valid frequencies and their code. Then, if you want to run the GPU at 684 Mhz:
 
     echo 0b >/sys/kernel/debug/dri/128/pstate
+
+GPU DVFS is also supported on TK1 (not TX1 yet). To enable it:
+
+    echo auto >/sys/kernel/debug/dri/128/pstate
 
 Authors
 -------
