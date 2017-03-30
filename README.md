@@ -95,7 +95,9 @@ We should now be able to cross-compile the Linux kernel:
 
 This script will install the kernel under /boot/zImage-upstream of the target FS and link /boot/zImage to it, after having renamed any existing kernel binary to /boot/zImage-l4t. Finally, it will add a U-boot script that will boot the upstream kernel in place of the one provided by the distro.
 
-The Nouveau driver provided in this kernel is recent enough for both Jetson TK1 and TX1.
+The Nouveau driver provided in this kernel is recent enough for both Jetson TK1 and TX1. However you can also build the Nouveau module from the latest external repository:
+
+    ./scripts/build-nouveau
 
 Compiling Mesa
 --------------
